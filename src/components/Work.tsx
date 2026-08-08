@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdArrowOutward, MdInfoOutline } from "react-icons/md";
+import { MdArrowOutward } from "react-icons/md";
 import { FaGithub } from "react-icons/fa6";
 import "./styles/Work.css";
 
@@ -201,7 +201,6 @@ const projects: ProjectItem[] = [
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   const filteredProjects = projects.filter((project) => {
     if (activeCategory === "all") return true;
@@ -314,134 +313,12 @@ const Work = () => {
                     ) : (
                       <span className="case-study">Research / Enterprise</span>
                     )}
-                    {project.details && (
-                      <button
-                        onClick={() => setSelectedProject(project)}
-                        className="btn-ghost small-btn"
-                      >
-                        <MdInfoOutline /> Details
-                      </button>
-                    )}
                   </div>
                 </div>
               </article>
             );
           })}
         </div>
-
-        {/* Detailed Project Modal */}
-        {selectedProject && selectedProject.details && (
-          <div className="project-modal-backdrop" onClick={() => setSelectedProject(null)}>
-            <div className="project-modal-card glass-effect" onClick={(e) => e.stopPropagation()}>
-              <button
-                className="modal-close-btn"
-                onClick={() => setSelectedProject(null)}
-                aria-label="Close modal"
-              >
-                ✕
-              </button>
-
-              <div className="modal-header">
-                <span className="project-stack">{selectedProject.stack}</span>
-                <h2 className="modal-title">{selectedProject.title}</h2>
-                <div className="project-tags">
-                  {selectedProject.tags.map((tag) => (
-                    <span key={tag} className="tech-badge">{tag}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="modal-body">
-                <div className="modal-section">
-                  <h4 className="modal-section-title">Overview</h4>
-                  <p>{selectedProject.details.overview}</p>
-                </div>
-
-                <div className="modal-grid-2">
-                  <div className="modal-section">
-                    <h4 className="modal-section-title">Problem Statement</h4>
-                    <p>{selectedProject.details.problem}</p>
-                  </div>
-                  <div className="modal-section">
-                    <h4 className="modal-section-title">Architectural Solution</h4>
-                    <p>{selectedProject.details.solution}</p>
-                  </div>
-                </div>
-
-                <div className="modal-section">
-                  <h4 className="modal-section-title">Key Technical Modules</h4>
-                  <div className="modal-features-grid">
-                    {selectedProject.details.features.map((feat) => (
-                      <div key={feat.title} className="modal-feature-card">
-                        <h5>{feat.title}</h5>
-                        <ul>
-                          {feat.items.map((item) => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="modal-grid-2">
-                  <div className="modal-section">
-                    <h4 className="modal-section-title">Tech Stack Architecture</h4>
-                    <ul className="modal-list">
-                      {selectedProject.details.architecture.map((arch) => (
-                        <li key={arch}>{arch}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="modal-section">
-                    <h4 className="modal-section-title">Security & Protocols</h4>
-                    <ul className="modal-list">
-                      {selectedProject.details.security.map((sec) => (
-                        <li key={sec}>{sec}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="modal-section">
-                  <h4 className="modal-section-title">Cloud Deployment Infrastructure</h4>
-                  <div className="deployment-tags">
-                    <span className="tech-badge">Frontend: {selectedProject.details.deployment.frontend}</span>
-                    <span className="tech-badge">Backend: {selectedProject.details.deployment.backend}</span>
-                    <span className="tech-badge">Database: {selectedProject.details.deployment.database}</span>
-                    <span className="tech-badge">Storage: {selectedProject.details.deployment.storage}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="modal-footer">
-                <div className="project-links">
-                  {selectedProject.github && (
-                    <a
-                      href={selectedProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-secondary small-btn"
-                    >
-                      <FaGithub /> GitHub Repository
-                    </a>
-                  )}
-                  {selectedProject.link && (
-                    <a
-                      href={selectedProject.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary small-btn"
-                    >
-                      Live Demo <MdArrowOutward />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
