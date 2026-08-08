@@ -37,22 +37,6 @@ interface ProjectItem {
 
 const projects: ProjectItem[] = [
   {
-    title: "CyberShield",
-    category: "realtime",
-    stack: "Web + AI",
-    tags: ["Next.js", "AI/ML", "MongoDB", "JWT", "Cloudinary"],
-    highlights: [
-      "AI-assisted complaint analysis platform with community-driven scam reporting for phone numbers, URLs, and UPI IDs.",
-      "Implemented dynamic risk scoring with an explainable trust engine that computes reputation scores based on report volume and severity.",
-      "Built responsive dashboards with JWT authentication, Cloudinary media uploads, and MongoDB-backed analytics."
-    ],
-    accent: "var(--accent-cyan)",
-    link: "https://cybershield-green-two.vercel.app",
-    github: "https://github.com/bhargabdeka-deka/cyber-crime-portal",
-    image: "/images/cybershield.webp",
-    featured: true
-  },
-  {
     title: "TextileHub — B2B Textile Marketplace",
     category: "fullstack",
     stack: "HACKATHON PROJECT",
@@ -117,6 +101,22 @@ const projects: ProjectItem[] = [
         storage: "Cloudinary"
       }
     }
+  },
+  {
+    title: "CyberShield",
+    category: "realtime",
+    stack: "Web + AI",
+    tags: ["Next.js", "AI/ML", "MongoDB", "JWT", "Cloudinary"],
+    highlights: [
+      "AI-assisted complaint analysis platform with community-driven scam reporting for phone numbers, URLs, and UPI IDs.",
+      "Implemented dynamic risk scoring with an explainable trust engine that computes reputation scores based on report volume and severity.",
+      "Built responsive dashboards with JWT authentication, Cloudinary media uploads, and MongoDB-backed analytics."
+    ],
+    accent: "var(--accent-cyan)",
+    link: "https://cybershield-green-two.vercel.app",
+    github: "https://github.com/bhargabdeka-deka/cyber-crime-portal",
+    image: "/images/cybershield.webp",
+    featured: true
   },
   {
     title: "InterviewOS",
