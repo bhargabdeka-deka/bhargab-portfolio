@@ -3,7 +3,6 @@ import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
-import ChatWidget from "./ChatWidget";
 
 const About = lazy(() => import("./About"));
 const Career = lazy(() => import("./Career"));
@@ -52,7 +51,6 @@ const MainContainer = () => {
           </div>
         </div>
       </div>
-      <ChatWidget />
     </div>
   );
 };
