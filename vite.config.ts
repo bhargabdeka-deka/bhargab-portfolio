@@ -9,7 +9,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          three: ["three", "three-stdlib"],
           gsap: ["gsap"],
           react: ["react", "react-dom"],
         },
