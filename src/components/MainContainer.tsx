@@ -1,14 +1,15 @@
-import { useEffect } from "react";
-import About from "./About";
-import Career from "./Career";
-import Contact from "./Contact";
+import { useEffect, Suspense, lazy } from "react";
 import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
-import TechStack from "./TechStack";
-import WhatIDo from "./WhatIDo";
-import Work from "./Work";
+
+const About = lazy(() => import("./About"));
+const Career = lazy(() => import("./Career"));
+const Contact = lazy(() => import("./Contact"));
+const TechStack = lazy(() => import("./TechStack"));
+const WhatIDo = lazy(() => import("./WhatIDo"));
+const Work = lazy(() => import("./Work"));
 import { initialFX } from "./utils/initialFX";
 import setSplitText from "./utils/splitText";
 
@@ -39,12 +40,14 @@ const MainContainer = () => {
         <div id="smooth-content">
           <div className="container-main">
             <Landing />
-            <About />
-            <WhatIDo />
-            <Career />
-            <Work />
-            <TechStack />
-            <Contact />
+            <Suspense fallback={null}>
+              <About />
+              <WhatIDo />
+              <Career />
+              <Work />
+              <TechStack />
+              <Contact />
+            </Suspense>
           </div>
         </div>
       </div>
