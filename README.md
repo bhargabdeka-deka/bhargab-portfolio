@@ -1,7 +1,5 @@
 # Bhargab Deka — Full Stack Developer Portfolio
 
-![Portfolio Preview](./public/images/cybershield.webp)
-
 A premium, high-performance developer portfolio built to showcase production-grade applications, real-time engines, and AI-integrated systems. The platform features a sophisticated dark/light mode design system, smooth GSAP animations, and enterprise-level performance optimizations.
 
 **Live Website:** [https://bhargab-deka-portfolio.vercel.app](https://bhargab-deka-portfolio.vercel.app)
