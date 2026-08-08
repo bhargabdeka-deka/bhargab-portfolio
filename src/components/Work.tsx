@@ -1,11 +1,41 @@
 import { useState } from "react";
-import { MdArrowOutward } from "react-icons/md";
+import { MdArrowOutward, MdInfoOutline } from "react-icons/md";
 import { FaGithub } from "react-icons/fa6";
 import "./styles/Work.css";
 
 type ProjectCategory = "all" | "fullstack" | "realtime" | "web";
 
-const projects = [
+interface ProjectDetail {
+  overview: string;
+  problem: string;
+  solution: string;
+  features: { title: string; items: string[] }[];
+  architecture: string[];
+  security: string[];
+  deployment: {
+    frontend: string;
+    backend: string;
+    database: string;
+    storage: string;
+  };
+}
+
+interface ProjectItem {
+  title: string;
+  category: string;
+  stack: string;
+  badge?: string;
+  tags: string[];
+  highlights: string[];
+  accent: string;
+  link: string | null;
+  github: string | null;
+  image?: string;
+  featured: boolean;
+  details?: ProjectDetail;
+}
+
+const projects: ProjectItem[] = [
   {
     title: "CyberShield",
     category: "realtime",
@@ -21,6 +51,72 @@ const projects = [
     github: "https://github.com/bhargabdeka-deka/cyber-crime-portal",
     image: "/images/cybershield.webp",
     featured: true
+  },
+  {
+    title: "TextileHub — B2B Textile Marketplace",
+    category: "fullstack",
+    stack: "HACKATHON PROJECT",
+    badge: "Hackathon Project · Full Stack · AI",
+    tags: ["React", "Node.js", "MongoDB", "JWT", "AI"],
+    highlights: [
+      "Built a full-stack B2B textile marketplace connecting fabric suppliers and bulk buyers, featuring specification-based discovery, supplier workflows, procurement management, and an AI sourcing assistant.",
+      "Engineered role-based Buyer/Supplier portals, persistent cart management, bulk order fulfillment, and Cloudinary-backed fabric catalog management.",
+      "Integrated 'Maya AI' sourcing assistant for interactive fabric specification matching, GSM recommendations, weave guidance, and contextual procurement navigation."
+    ],
+    accent: "var(--accent-gold)",
+    link: "https://textile-marketplace-alpha.vercel.app",
+    github: "https://github.com/bhargabdeka-deka/textile-marketplace",
+    image: "/images/textilehub.png",
+    featured: true,
+    details: {
+      overview: "TextileHub is a hackathon-built B2B textile marketplace designed to connect regional textile weaving mills, fabric suppliers, and bulk buyers through a digital procurement workflow.",
+      problem: "Traditional B2B fabric sourcing involves fragmented supplier discovery, manual specification matching, opaque pricing, and slow communication across regional mills.",
+      solution: "A role-based marketplace that digitizes the end-to-end procurement cycle with parametric fabric specification filtering, automated catalog management, persistent bulk ordering, and an interactive AI sourcing assistant.",
+      features: [
+        {
+          title: "Buyer Marketplace",
+          items: [
+            "Specification-based fabric catalog filtering (GSM, Weave, Blend)",
+            "Smart parametric fabric search across multiple regional mill variants",
+            "Persistent cart, bulk purchase orders, and live order tracking"
+          ]
+        },
+        {
+          title: "Supplier Portal",
+          items: [
+            "Supplier catalog CRUD management with Cloudinary image uploads",
+            "Order fulfillment dashboard and inventory status tracking",
+            "Role-based access control (RBAC) separating buyer and supplier workflows"
+          ]
+        },
+        {
+          title: "AI Sourcing Assistant ('Maya AI')",
+          items: [
+            "Conversational assistant for fabric spec recommendations and GSM guidance",
+            "Weave & composition matching tailored to garment manufacturing needs",
+            "Contextual navigation shortcuts for immediate procurement action"
+          ]
+        }
+      ],
+      architecture: [
+        "Frontend: React + Vite (Tailwind CSS, Zustand, Lucide)",
+        "Backend API: Node.js + Express REST API",
+        "Database: MongoDB Atlas + Mongoose ORM",
+        "Storage & Auth: Cloudinary Image Storage, JWT Authentication",
+        "Deployment: Vercel (Frontend) + Render (Backend API)"
+      ],
+      security: [
+        "JWT session authentication with protected route middleware",
+        "Role-Based Access Control (RBAC) protecting supplier catalog APIs",
+        "Password hashing with bcrypt & CORS security header policies"
+      ],
+      deployment: {
+        frontend: "Vercel",
+        backend: "Render (API: https://textile-marketplace-api.onrender.com/api)",
+        database: "MongoDB Atlas",
+        storage: "Cloudinary"
+      }
+    }
   },
   {
     title: "InterviewOS",
@@ -105,10 +201,14 @@ const projects = [
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   const filteredProjects = projects.filter((project) => {
     if (activeCategory === "all") return true;
-    return project.category === activeCategory;
+    if (activeCategory === "fullstack") return project.category === "fullstack";
+    if (activeCategory === "realtime") return project.category === "realtime" || project.tags.includes("AI");
+    if (activeCategory === "web") return project.category === "web";
+    return true;
   });
 
   return (
@@ -214,17 +314,140 @@ const Work = () => {
                     ) : (
                       <span className="case-study">Research / Enterprise</span>
                     )}
+                    {project.details && (
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        className="btn-ghost small-btn"
+                      >
+                        <MdInfoOutline /> Details
+                      </button>
+                    )}
                   </div>
                 </div>
               </article>
             );
           })}
         </div>
+
+        {/* Detailed Project Modal */}
+        {selectedProject && selectedProject.details && (
+          <div className="project-modal-backdrop" onClick={() => setSelectedProject(null)}>
+            <div className="project-modal-card glass-effect" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="modal-close-btn"
+                onClick={() => setSelectedProject(null)}
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+
+              <div className="modal-header">
+                <span className="project-stack">{selectedProject.stack}</span>
+                <h2 className="modal-title">{selectedProject.title}</h2>
+                <div className="project-tags">
+                  {selectedProject.tags.map((tag) => (
+                    <span key={tag} className="tech-badge">{tag}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="modal-body">
+                <div className="modal-section">
+                  <h4 className="modal-section-title">Overview</h4>
+                  <p>{selectedProject.details.overview}</p>
+                </div>
+
+                <div className="modal-grid-2">
+                  <div className="modal-section">
+                    <h4 className="modal-section-title">Problem Statement</h4>
+                    <p>{selectedProject.details.problem}</p>
+                  </div>
+                  <div className="modal-section">
+                    <h4 className="modal-section-title">Architectural Solution</h4>
+                    <p>{selectedProject.details.solution}</p>
+                  </div>
+                </div>
+
+                <div className="modal-section">
+                  <h4 className="modal-section-title">Key Technical Modules</h4>
+                  <div className="modal-features-grid">
+                    {selectedProject.details.features.map((feat) => (
+                      <div key={feat.title} className="modal-feature-card">
+                        <h5>{feat.title}</h5>
+                        <ul>
+                          {feat.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="modal-grid-2">
+                  <div className="modal-section">
+                    <h4 className="modal-section-title">Tech Stack Architecture</h4>
+                    <ul className="modal-list">
+                      {selectedProject.details.architecture.map((arch) => (
+                        <li key={arch}>{arch}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="modal-section">
+                    <h4 className="modal-section-title">Security & Protocols</h4>
+                    <ul className="modal-list">
+                      {selectedProject.details.security.map((sec) => (
+                        <li key={sec}>{sec}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="modal-section">
+                  <h4 className="modal-section-title">Cloud Deployment Infrastructure</h4>
+                  <div className="deployment-tags">
+                    <span className="tech-badge">Frontend: {selectedProject.details.deployment.frontend}</span>
+                    <span className="tech-badge">Backend: {selectedProject.details.deployment.backend}</span>
+                    <span className="tech-badge">Database: {selectedProject.details.deployment.database}</span>
+                    <span className="tech-badge">Storage: {selectedProject.details.deployment.storage}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="modal-footer">
+                <div className="project-links">
+                  {selectedProject.github && (
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary small-btn"
+                    >
+                      <FaGithub /> GitHub Repository
+                    </a>
+                  )}
+                  {selectedProject.link && (
+                    <a
+                      href={selectedProject.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary small-btn"
+                    >
+                      Live Demo <MdArrowOutward />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 export default Work;
+
 
 
