@@ -30,6 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
   padding: 16px 20px;
   background: var(--subtle-surface);
@@ -56,10 +57,10 @@
 }
 
 .email-value {
-  font-size: 14px;
+  font-size: clamp(12px, 4vw, 14px);
   font-weight: 700;
   color: var(--text-primary);
-  word-break: break-all;
+  white-space: nowrap;
 }
 
 .copy-btn {
