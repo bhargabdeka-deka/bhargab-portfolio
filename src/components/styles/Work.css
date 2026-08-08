@@ -50,15 +50,17 @@
 }
 
 .project-index {
-  font-size: 12px;
-  font-weight: 900;
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 700;
   color: var(--text-muted);
   letter-spacing: 0.12em;
 }
 
 .project-stack {
+  font-family: var(--font-code);
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 700;
   padding: 6px 9px;
   background: var(--subtle-surface);
   border: 1px solid var(--border-subtle);
@@ -66,6 +68,10 @@
   color: var(--text-secondary);
   text-transform: uppercase;
   text-align: right;
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .project-card-body {
@@ -73,12 +79,14 @@
 }
 
 .project-title {
-  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
-  line-height: 1.18;
-  margin: 0 0 18px;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  line-height: 1.25;
+  margin: 0 0 16px;
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .project-arrow {

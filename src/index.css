@@ -218,6 +218,10 @@ button {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  display: inline-block;
+  padding-right: 0.05em;
+  padding-bottom: 0.04em;
+  box-sizing: content-box;
 }
 
 .glass-effect {
@@ -261,13 +265,16 @@ button {
 }
 
 .section-title {
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-size: clamp(2rem, 5.5vw, 4.2rem);
   margin-bottom: 16px;
-  line-height: 1.05;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .section-subtitle {
-  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  font-size: clamp(0.95rem, 1.4vw, 1.12rem);
   color: var(--text-secondary);
   max-width: 620px;
   margin-inline: auto;
@@ -284,6 +291,7 @@ button {
   border-radius: 999px;
   gap: 4px;
   margin-bottom: 32px;
+  max-width: 100%;
 }
 
 .tab-btn {
@@ -335,11 +343,42 @@ button {
   }
 
   .section-padding {
-    padding: 64px var(--section-padding-inline);
+    padding: 56px var(--section-padding-inline);
   }
 
   .section-title {
-    font-size: clamp(2rem, 8vw, 2.8rem);
+    font-size: clamp(1.85rem, 7vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .tab-switcher {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 4px;
+    border-radius: 14px;
+  }
+
+  .tab-switcher::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --section-padding-inline: 4%;
+  }
+
+  .section-title {
+    font-size: clamp(1.65rem, 8.5vw, 2.1rem);
   }
 }
 
