@@ -1,0 +1,123 @@
+.career-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: var(--section-padding-inline);
+}
+
+.career-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  max-width: 930px;
+  margin: 0 auto;
+}
+
+.career-item {
+  display: flex;
+  gap: 28px;
+  position: relative;
+}
+
+.career-dot-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.career-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  margin-top: 32px;
+  z-index: 2;
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent-gold) 8%, transparent);
+}
+
+.career-line {
+  width: 1px;
+  flex-grow: 1;
+  background: var(--border-subtle);
+}
+
+.career-item:last-child .career-line {
+  display: none;
+}
+
+.career-content {
+  padding: clamp(24px, 3vw, 34px);
+  flex-grow: 1;
+}
+
+.career-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.career-role {
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  margin: 0;
+}
+
+.career-company {
+  font-size: 15px;
+  color: var(--accent-blue);
+  font-weight: 800;
+  margin: 4px 0 0;
+}
+
+.career-year {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--accent-gold);
+  background: color-mix(in srgb, var(--accent-gold) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-gold) 18%, transparent);
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+
+.career-description {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.career-description li {
+  margin-bottom: 8px;
+}
+
+.career-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.tech-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--subtle-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .career-item {
+    gap: 15px;
+  }
+
+  .career-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,230 @@
+.about-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: var(--section-padding-inline);
+}
+
+.about-container {
+  display: flex;
+  justify-content: center;
+}
+
+.about-content {
+  max-width: 940px;
+  width: 100%;
+}
+
+.tab-switcher-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.about-card {
+  padding: clamp(28px, 4.5vw, 48px);
+  position: relative;
+}
+
+.tab-content.fade-in {
+  animation: fadeInTab 0.35s ease forwards;
+}
+
+@keyframes fadeInTab {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.about-profile-header {
+  margin-bottom: 24px;
+}
+
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: color-mix(in srgb, var(--accent-cyan) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-cyan) 25%, transparent);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 12px;
+}
+
+.about-heading {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: var(--text-primary);
+}
+
+.about-institution {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.about-text {
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.about-text strong {
+  color: var(--text-primary);
+}
+
+.about-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 24px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: var(--subtle-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+}
+
+.highlight-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent-cyan) 15%, transparent);
+  color: var(--accent-cyan);
+  font-size: 18px;
+}
+
+.highlight-item h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.highlight-item p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Skills overview grid */
+.skills-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.skill-box {
+  padding: 18px;
+  background: var(--subtle-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+}
+
+.skill-box-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.skill-box p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Journey list */
+.journey-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.journey-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 16px 20px;
+  background: var(--subtle-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+}
+
+.journey-year {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent-gold);
+  padding: 4px 10px;
+  background: color-mix(in srgb, var(--accent-gold) 12%, transparent);
+  border-radius: 6px;
+  flex: 0 0 auto;
+}
+
+.journey-info h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.journey-info p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.about-card-footer {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.link-with-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.link-with-arrow:hover {
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+@media screen and (max-width: 768px) {
+  .about-highlights-grid,
+  .skills-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
