@@ -66,7 +66,7 @@ const projects: ProjectItem[] = [
     accent: "var(--accent-gold)",
     link: "https://textile-marketplace-alpha.vercel.app",
     github: "https://github.com/bhargabdeka-deka/textile-marketplace",
-    image: "/images/textilehub.png",
+    image: "/images/textile.png",
     featured: true,
     details: {
       overview: "TextileHub is a hackathon-built B2B textile marketplace designed to connect regional textile weaving mills, fabric suppliers, and bulk buyers through a digital procurement workflow.",
