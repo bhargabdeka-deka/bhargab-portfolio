@@ -378,6 +378,14 @@
     font-size: clamp(2.2rem, 10vw, 3.2rem);
   }
 
+  .landing-tagline {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  }
+
+  .landing-subtitle {
+    font-size: clamp(0.85rem, 4vw, 1rem);
+  }
+
   .hero-cta {
     width: 100%;
     flex-direction: column;
@@ -386,6 +394,23 @@
   .hero-cta a,
   .hero-cta button {
     width: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    font-size: 13px;
+    padding: 10px 16px;
+    min-height: 44px;
+  }
+
+  .code-card-body {
+    font-size: 11px;
+    padding: 16px;
+  }
+
+  .code-title {
+    font-size: 11px;
   }
 
   .scroll-indicator {

@@ -54,7 +54,7 @@
 }
 
 .about-heading {
-  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.85rem);
   font-weight: 800;
   margin: 0 0 6px;
   color: var(--text-primary);
@@ -67,7 +67,7 @@
 }
 
 .about-text {
-  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  font-size: clamp(0.85rem, 4vw, 1.12rem);
   line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: 32px;
