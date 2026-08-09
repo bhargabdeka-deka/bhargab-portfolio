@@ -29,7 +29,7 @@ const Navbar = () => {
   }, [theme]);
 
   useEffect(() => {
-    ScrollTrigger.normalizeScroll(true);
+    ScrollTrigger.normalizeScroll({ allowNestedScroll: true });
     const scrollSmoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
