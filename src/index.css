@@ -340,3 +340,17 @@ button {
   }
 }
 
+@media screen and (max-width: 640px) {
+  .tab-switcher {
+    padding: 2px;
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .tab-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+}
+
