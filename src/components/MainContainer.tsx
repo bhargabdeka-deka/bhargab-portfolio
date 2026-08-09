@@ -1,15 +1,14 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect } from "react";
+import About from "./About";
+import Career from "./Career";
+import Contact from "./Contact";
 import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
-
-const About = lazy(() => import("./About"));
-const Career = lazy(() => import("./Career"));
-const Contact = lazy(() => import("./Contact"));
-const TechStack = lazy(() => import("./TechStack"));
-const WhatIDo = lazy(() => import("./WhatIDo"));
-const Work = lazy(() => import("./Work"));
+import TechStack from "./TechStack";
+import WhatIDo from "./WhatIDo";
+import Work from "./Work";
 import { initialFX } from "./utils/initialFX";
 import setSplitText from "./utils/splitText";
 
@@ -20,8 +19,13 @@ const MainContainer = () => {
       initialFX();
     }, 200);
     
+    let lastWidth = window.innerWidth;
     const resizeHandler = () => {
-      setSplitText();
+      const currentWidth = window.innerWidth;
+      if (currentWidth !== lastWidth) {
+        lastWidth = currentWidth;
+        setSplitText();
+      }
     };
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
@@ -40,14 +44,12 @@ const MainContainer = () => {
         <div id="smooth-content">
           <div className="container-main">
             <Landing />
-            <Suspense fallback={null}>
-              <About />
-              <WhatIDo />
-              <Career />
-              <Work />
-              <TechStack />
-              <Contact />
-            </Suspense>
+            <About />
+            <WhatIDo />
+            <Career />
+            <Work />
+            <TechStack />
+            <Contact />
           </div>
         </div>
       </div>

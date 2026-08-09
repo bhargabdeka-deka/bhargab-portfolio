@@ -56,8 +56,12 @@ const Navbar = () => {
         }
       });
     });
+    let lastWidth = window.innerWidth;
     window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        ScrollSmoother.refresh(true);
+      }
     });
   }, []);
   const toggleTheme = () => {

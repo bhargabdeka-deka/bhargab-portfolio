@@ -5,103 +5,7 @@ import "./styles/Work.css";
 
 type ProjectCategory = "all" | "fullstack" | "realtime" | "web";
 
-interface ProjectDetail {
-  overview: string;
-  problem: string;
-  solution: string;
-  features: { title: string; items: string[] }[];
-  architecture: string[];
-  security: string[];
-  deployment: {
-    frontend: string;
-    backend: string;
-    database: string;
-    storage: string;
-  };
-}
-
-interface ProjectItem {
-  title: string;
-  category: string;
-  stack: string;
-  badge?: string;
-  tags: string[];
-  highlights: string[];
-  accent: string;
-  link: string | null;
-  github: string | null;
-  image?: string;
-  featured: boolean;
-  details?: ProjectDetail;
-}
-
-const projects: ProjectItem[] = [
-  {
-    title: "TextileHub — B2B Textile Marketplace",
-    category: "fullstack",
-    stack: "HACKATHON PROJECT",
-    badge: "Hackathon Project · Full Stack · AI",
-    tags: ["React", "Node.js", "MongoDB", "JWT", "AI"],
-    highlights: [
-      "Built a full-stack B2B textile marketplace connecting fabric suppliers and bulk buyers, featuring specification-based discovery, supplier workflows, procurement management, and an AI sourcing assistant.",
-      "Engineered role-based Buyer/Supplier portals, persistent cart management, bulk order fulfillment, and Cloudinary-backed fabric catalog management.",
-      "Integrated 'Maya AI' sourcing assistant for interactive fabric specification matching, GSM recommendations, weave guidance, and contextual procurement navigation."
-    ],
-    accent: "var(--accent-gold)",
-    link: "https://textile-marketplace-alpha.vercel.app",
-    github: "https://github.com/bhargabdeka-deka/textile-marketplace",
-    image: "/images/textile.png",
-    featured: true,
-    details: {
-      overview: "TextileHub is a hackathon-built B2B textile marketplace designed to connect regional textile weaving mills, fabric suppliers, and bulk buyers through a digital procurement workflow.",
-      problem: "Traditional B2B fabric sourcing involves fragmented supplier discovery, manual specification matching, opaque pricing, and slow communication across regional mills.",
-      solution: "A role-based marketplace that digitizes the end-to-end procurement cycle with parametric fabric specification filtering, automated catalog management, persistent bulk ordering, and an interactive AI sourcing assistant.",
-      features: [
-        {
-          title: "Buyer Marketplace",
-          items: [
-            "Specification-based fabric catalog filtering (GSM, Weave, Blend)",
-            "Smart parametric fabric search across multiple regional mill variants",
-            "Persistent cart, bulk purchase orders, and live order tracking"
-          ]
-        },
-        {
-          title: "Supplier Portal",
-          items: [
-            "Supplier catalog CRUD management with Cloudinary image uploads",
-            "Order fulfillment dashboard and inventory status tracking",
-            "Role-based access control (RBAC) separating buyer and supplier workflows"
-          ]
-        },
-        {
-          title: "AI Sourcing Assistant ('Maya AI')",
-          items: [
-            "Conversational assistant for fabric spec recommendations and GSM guidance",
-            "Weave & composition matching tailored to garment manufacturing needs",
-            "Contextual navigation shortcuts for immediate procurement action"
-          ]
-        }
-      ],
-      architecture: [
-        "Frontend: React + Vite (Tailwind CSS, Zustand, Lucide)",
-        "Backend API: Node.js + Express REST API",
-        "Database: MongoDB Atlas + Mongoose ORM",
-        "Storage & Auth: Cloudinary Image Storage, JWT Authentication",
-        "Deployment: Vercel (Frontend) + Render (Backend API)"
-      ],
-      security: [
-        "JWT session authentication with protected route middleware",
-        "Role-Based Access Control (RBAC) protecting supplier catalog APIs",
-        "Password hashing with bcrypt & CORS security header policies"
-      ],
-      deployment: {
-        frontend: "Vercel",
-        backend: "Render (API: https://textile-marketplace-api.onrender.com/api)",
-        database: "MongoDB Atlas",
-        storage: "Cloudinary"
-      }
-    }
-  },
+const projects = [
   {
     title: "CyberShield",
     category: "realtime",
@@ -204,10 +108,7 @@ const Work = () => {
 
   const filteredProjects = projects.filter((project) => {
     if (activeCategory === "all") return true;
-    if (activeCategory === "fullstack") return project.category === "fullstack";
-    if (activeCategory === "realtime") return project.category === "realtime" || project.tags.includes("AI");
-    if (activeCategory === "web") return project.category === "web";
-    return true;
+    return project.category === activeCategory;
   });
 
   return (
@@ -325,6 +226,5 @@ const Work = () => {
 };
 
 export default Work;
-
 
 

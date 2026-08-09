@@ -86,25 +86,21 @@
 
 .landing-name {
   font-size: clamp(3.2rem, 6vw, 5.5rem);
-  line-height: 1.05;
+  line-height: 0.95;
   margin: 0 0 12px;
-  letter-spacing: -0.03em;
-  word-break: normal;
-  overflow-wrap: break-word;
-  padding-right: 0.04em;
-  padding-bottom: 0.02em;
+  letter-spacing: -0.04em;
 }
 
 .landing-tagline {
-  font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+  font-size: clamp(1.3rem, 2.4vw, 1.85rem);
   font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 20px;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 .landing-subtitle {
-  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
   color: var(--text-secondary);
   margin: 0 0 32px;
   max-width: 640px;
@@ -261,12 +257,11 @@
 }
 
 .code-card-body {
-  padding: 20px 24px;
-  font-family: var(--font-code);
+  padding: 24px;
+  font-family: "Fira Code", "Courier New", Courier, monospace;
   font-size: 13px;
   line-height: 1.7;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .code-card-body pre {
@@ -291,15 +286,13 @@
 }
 
 .stat-num {
-  font-family: var(--font-code);
   font-size: 18px;
   font-weight: 800;
   color: var(--accent-gold);
 }
 
 .stat-txt {
-  font-family: var(--font-code);
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -378,28 +371,11 @@
 
 @media screen and (max-width: 640px) {
   .landing-section {
-    padding: 92px var(--section-padding-inline) 48px;
-  }
-
-  .hero-status-pill {
-    max-width: 100%;
-    padding: 6px 12px;
-  }
-
-  .hero-status-pill span:not(.status-dot) {
-    font-size: 11px;
-    letter-spacing: 0.02em;
+    padding: 100px var(--section-padding-inline) 60px;
   }
 
   .landing-name {
-    font-size: clamp(2.3rem, 10.5vw, 3.4rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-  }
-
-  .landing-tagline {
-    font-size: clamp(1.1rem, 4.8vw, 1.45rem);
-    line-height: 1.35;
+    font-size: clamp(2.6rem, 12vw, 3.8rem);
   }
 
   .hero-cta {
@@ -412,23 +388,8 @@
     width: 100%;
   }
 
-  .code-card-body {
-    padding: 16px;
-    font-size: 11.5px;
-  }
-
   .scroll-indicator {
     display: none;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  .landing-name {
-    font-size: 2.1rem;
-  }
-
-  .code-card-footer {
-    grid-template-columns: 1fr;
   }
 }
 

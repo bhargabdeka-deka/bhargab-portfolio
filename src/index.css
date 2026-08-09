@@ -1,10 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap");
 
 :root {
-  font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-main: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-title: "Outfit", system-ui, -apple-system, sans-serif;
-  --font-heading: "Outfit", system-ui, -apple-system, sans-serif;
-  --font-code: "JetBrains Mono", "Fira Code", monospace;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-title: "Outfit", system-ui, sans-serif;
+  --font-heading: "Outfit", system-ui, sans-serif;
+  --font-code: "Fira Code", monospace;
 
   font-optical-sizing: auto;
   font-style: normal;
@@ -217,10 +218,6 @@ button {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  display: inline-block;
-  padding-right: 0.05em;
-  padding-bottom: 0.04em;
-  box-sizing: content-box;
 }
 
 .glass-effect {
@@ -253,27 +250,22 @@ button {
 }
 
 .section-subtitle-small {
-  font-family: var(--font-code);
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
   color: var(--accent-cyan);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   margin-bottom: 12px;
-  display: inline-block;
 }
 
 .section-title {
-  font-size: clamp(2rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
   margin-bottom: 16px;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  word-break: normal;
-  overflow-wrap: break-word;
+  line-height: 1.05;
 }
 
 .section-subtitle {
-  font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
   color: var(--text-secondary);
   max-width: 620px;
   margin-inline: auto;
@@ -290,15 +282,13 @@ button {
   border-radius: 999px;
   gap: 4px;
   margin-bottom: 32px;
-  max-width: 100%;
 }
 
 .tab-btn {
-  font-family: var(--font-code);
-  padding: 8px 18px;
+  padding: 8px 20px;
   border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
   color: var(--text-secondary);
   transition: all 0.25s ease;
   white-space: nowrap;
@@ -342,42 +332,11 @@ button {
   }
 
   .section-padding {
-    padding: 56px var(--section-padding-inline);
+    padding: 64px var(--section-padding-inline);
   }
 
   .section-title {
-    font-size: clamp(1.85rem, 7vw, 2.6rem);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
-
-  .tab-switcher {
-    width: 100%;
-    overflow-x: auto;
-    justify-content: flex-start;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding: 4px;
-    border-radius: 14px;
-  }
-
-  .tab-switcher::-webkit-scrollbar {
-    display: none;
-  }
-
-  .tab-btn {
-    padding: 8px 14px;
-    font-size: 11px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  :root {
-    --section-padding-inline: 4%;
-  }
-
-  .section-title {
-    font-size: clamp(1.65rem, 8.5vw, 2.1rem);
+    font-size: clamp(2rem, 8vw, 2.8rem);
   }
 }
 

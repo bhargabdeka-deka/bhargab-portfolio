@@ -1,15 +1,27 @@
 import { useState } from "react";
-import { MdArrowOutward, MdCopyright, MdEmail, MdContentCopy, MdCheck } from "react-icons/md";
+import { MdArrowOutward, MdCopyright, MdEmail, MdContentCopy, MdCheck, MdSend } from "react-icons/md";
 import { FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa6";
 import "./styles/Contact.css";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("bhargab1234deka@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({ name: "", email: "", message: "" });
+    }, 4000);
   };
 
   return (
@@ -21,7 +33,7 @@ const Contact = () => {
             Get in <span className="premium-gradient-text">Touch</span>
           </h2>
           <p className="section-subtitle">
-            Open for Software Engineer, Full Stack Engineer, and Backend opportunities. Feel free to connect directly.
+            Open for Software Engineer, Full Stack Engineer, and Backend opportunities. Feel free to send a message or connect directly.
           </p>
         </div>
 
@@ -59,6 +71,58 @@ const Contact = () => {
                 <FaLinkedin /> LinkedIn <MdArrowOutward />
               </a>
             </div>
+          </div>
+
+          {/* Right Quick Message Form */}
+          <div className="contact-form-card soft-card">
+            <h3 className="contact-card-title">Send a Quick Message</h3>
+            
+            {submitted ? (
+              <div className="form-success-state fade-in">
+                <div className="success-icon"><MdCheck /></div>
+                <h4>Message Received!</h4>
+                <p>Thank you for reaching out, I will get back to you shortly.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="contact-form">
+                <div className="form-group">
+                  <label htmlFor="name">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Your Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={4}
+                    placeholder="Hi Bhargab, I'd like to discuss a Software Engineer role..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  ></textarea>
+                </div>
+                <button type="submit" className="btn-primary form-submit-btn">
+                  Send Message <MdSend />
+                </button>
+              </form>
+            )}
           </div>
         </div>
 
