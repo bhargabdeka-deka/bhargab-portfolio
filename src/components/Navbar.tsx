@@ -29,6 +29,7 @@ const Navbar = () => {
   }, [theme]);
 
   useEffect(() => {
+    ScrollTrigger.normalizeScroll(true);
     const scrollSmoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
@@ -37,6 +38,8 @@ const Navbar = () => {
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
+      normalizeScroll: true,
+      smoothTouch: 0.1,
     });
     setSmoother(scrollSmoother);
 
