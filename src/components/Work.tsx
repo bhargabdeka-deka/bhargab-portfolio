@@ -173,7 +173,7 @@ const Work = () => {
                   
                   {project.image && (
                     <div className="project-image-wrapper">
-                      <img src={project.image} alt={project.title} className="project-preview" loading="lazy" />
+                      <img src={project.image} alt={project.title} className="project-preview" />
                     </div>
                   )}
 

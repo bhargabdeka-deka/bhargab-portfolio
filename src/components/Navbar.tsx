@@ -29,7 +29,7 @@ const Navbar = () => {
   }, [theme]);
 
   useEffect(() => {
-    ScrollTrigger.normalizeScroll({ allowNestedScroll: true });
+
     const scrollSmoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
@@ -38,24 +38,21 @@ const Navbar = () => {
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
-      normalizeScroll: true,
       smoothTouch: 0.1,
     });
     setSmoother(scrollSmoother);
 
     scrollSmoother.scrollTop(0);
 
-    const links = document.querySelectorAll(".header ul a, .navbar-title");
+    const links = document.querySelectorAll('a[href^="#"], a[data-href]');
     links.forEach((elem) => {
       const element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
-        if (window.innerWidth >= 900) {
-          e.preventDefault();
-          const elem = e.currentTarget as HTMLAnchorElement;
-          const section = elem.getAttribute("data-href") || elem.getAttribute("href");
-          if (section) {
-            scrollSmoother.scrollTo(section, true, "top top");
-          }
+        e.preventDefault();
+        const elem = e.currentTarget as HTMLAnchorElement;
+        const section = elem.getAttribute("data-href") || elem.getAttribute("href");
+        if (section) {
+          scrollSmoother.scrollTo(section, true, "top top");
         }
       });
     });
