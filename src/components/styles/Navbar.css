@@ -102,12 +102,12 @@
   }
 
   .header ul {
-    gap: 4px;
+    gap: 2px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding-right: 2px;
+    padding-right: 0;
   }
   
   .header ul li {
@@ -119,9 +119,9 @@
   }
 
   .header ul li a {
-    min-height: 30px;
-    padding: 0 6px;
-    font-size: 9px;
-    letter-spacing: 0.02em;
+    min-height: 28px;
+    padding: 0 3px;
+    font-size: 8px;
+    letter-spacing: 0;
   }
 }
