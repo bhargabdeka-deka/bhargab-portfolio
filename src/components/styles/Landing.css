@@ -375,7 +375,7 @@
   }
 
   .landing-name {
-    font-size: clamp(2.6rem, 12vw, 3.8rem);
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
   }
 
   .hero-cta {
